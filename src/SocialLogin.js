@@ -24,6 +24,21 @@ function FacebookLogin() {
     //         console.error('Error fetching data:', error);
     //       });
     // },[])
+    const getDetail=()=>{
+        axios.get('http://localhost:8080/api/auth/details',  
+        {withCredentials:true,
+        headers: {
+       'Content-Type': 'application/json' // Đảm bảo định dạng dữ liệu gửi đi là JSON
+   }}
+        )
+        .then(response => {
+          console.log(response.data); // Dữ liệu phản hồi từ API
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+    }
+
     return ( 
         <div>
         <LoginSocialFacebook 
@@ -64,7 +79,9 @@ function FacebookLogin() {
         >
           <Button>Login google</Button>
         </LoginSocialGoogle>
+        <div><Button onClick={getDetail}>GetDetail</Button></div>
         </div>
+
      );
 }
 
